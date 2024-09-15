@@ -25,9 +25,17 @@ function getRandomNumber(min, max) {
 function checkGuess() {
   // Get value from guess input element
   const guess = parseInt(guessInput.value, 10);
-  attempts = attempts + 1;
+
 
   hideAllMessages();
+
+  if (!guessInput.value) {
+    numberOfGuessesMessage.style.display = '';
+    numberOfGuessesMessage.innerHTML = `Invalid Input. Please guess a number.`;
+    return
+  }
+
+  attempts = attempts + 1;
 
   if (guess === targetNumber) {
     numberOfGuessesMessage.style.display = '';
